@@ -7,15 +7,25 @@ const numOfFish = 90
 
 // make fish swim around
 
-export default function swim() {
+export default function spawn() {
     const verticalMin = 0 
     const verticalMax = 100
 
     for(let i = 0; i < numOfFish; ++ i) {
         const verticalPosition = Math.random(verticalMin, verticalMax + 1)
+        if (verticalPosition % 2 === 0)
+        {
+            // start left
+        } else {
+            // start right
+        }
     }
 }
 
+export function swim()
+{
+    // go from start to end horizontally
+}
 
 
 // when clicked - fish stop
