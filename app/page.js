@@ -1,11 +1,12 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import FishGame from "./shared/components/Fish";
+
+
 
 export default function Home() {
   return (
     <div>
-      <FishGame />
+    
     </div>
   );
 }
