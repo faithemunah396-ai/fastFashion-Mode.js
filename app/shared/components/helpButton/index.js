@@ -26,4 +26,4 @@ function HelpMeButton() {
     )
 }
 
-export (HelpMeButton)
+export { HelpMeButton }

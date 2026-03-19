@@ -598,7 +598,7 @@ function StartButton () {
                 alignItems: "center",
                 justifyContent: "center",
                 backgroundColor: "lightblue",
-                height: "40vh",
+                height: "55vh",
                 borderRadius: "15px",
             }}>
                 <p style={{
