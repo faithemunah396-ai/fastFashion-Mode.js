@@ -1,16 +1,20 @@
+"use client"
+import { useState } from "react";
+
 export default function InfoCards(){
     return (
       <div
         id="container"
         style={{
+          backgroundColor: "transparent",
           position: "absolute",
-          backgroundColor: "#76BCEF",
           top: "140%",
           width: "100vw",
           height: "100vw",
           padding: "50px",
           display: "flex",
           flexDirection: "column",
+          zindex: "3",
         }}
       >
         <div
