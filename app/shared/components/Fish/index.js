@@ -41,7 +41,7 @@ function FishPhase1() {
             return Math.floor(Math.random() * (max - min + 1)) + min
         }
 
-        const verticalPosition = getRandomInt(5, 80);
+        const verticalPosition = getRandomInt(100, 3000);
         const fishSize = getRandomInt(80, 200) 
         const randomNum = getRandomInt(0, 1)
         const swimDuration = getRandomInt(18, 35)
@@ -103,7 +103,7 @@ function FishPhase1() {
                 image: "/BigDeadFish.svg",
                 swimming: "paused",
                 verticalDirection: -1,
-                falling: 110,
+                falling: 400,
             })
 
 
@@ -112,7 +112,7 @@ function FishPhase1() {
                 image: "/SmDeadFish.svg",
                 swimming: "paused",
                 verticalDirection: -1,
-                falling: 110
+                falling:  400
             })
             
     }
@@ -123,7 +123,7 @@ function FishPhase1() {
     return (
         <div style={{
             position: "absolute",
-            top: `${fish.top}vh`,
+            top: `${fish.top}px`,
             left: `${fish.left}vw`,
             width: `${fish.size}px`,
             animation: `${swim.duration}s ${swim.direction} ${swim.delay}s linear, wiggle ${swim.wiggle}s infinite`,
@@ -132,7 +132,7 @@ function FishPhase1() {
             userSelect: "none" 
         }} onClick={killFish}>
                     <img src={alive.image} alt="Fish" style={{
-                        transition: "transform 7s",
+                        transition: "transform 14s",
                         transform: `scaleY(${alive.verticalDirection}) translateY(${alive.falling}vh)` // flips fish when clicked
                     }} />
                 </div>
@@ -155,7 +155,7 @@ function FishPhase1() {
             return Math.floor(Math.random() * (max - min + 1)) + min
         }
 
-        const verticalPosition = getRandomInt(5, 80);
+        const verticalPosition = getRandomInt(100, 3000);
         const fishSize = getRandomInt(80, 200) 
         const randomNum = getRandomInt(0, 1)
         const swimDuration = getRandomInt(12, 26)
@@ -217,7 +217,7 @@ function FishPhase1() {
                 image: "/BigDeadFish.svg",
                 swimming: "paused",
                 verticalDirection: -1,
-                falling: 110,
+                falling: 400,
             })
 
 
@@ -226,7 +226,7 @@ function FishPhase1() {
                 image: "/SmDeadFish.svg",
                 swimming: "paused",
                 verticalDirection: -1,
-                falling: 110
+                falling: 400
             })
             
     }
@@ -237,7 +237,7 @@ function FishPhase1() {
     return (
         <div style={{
             position: "absolute",
-            top: `${fish.top}vh`,
+            top: `${fish.top}px`,
             left: `${fish.left}vw`,
             width: `${fish.size}px`,
             animation: `${swim.duration}s ${swim.direction} ${swim.delay}s linear, wiggle ${swim.wiggle}s infinite`,
@@ -246,7 +246,7 @@ function FishPhase1() {
             userSelect: "none" 
         }} onClick={killFish}>
                     <img src={alive.image} alt="Fish" style={{
-                        transition: "transform 7s",
+                        transition: "transform 14s",
                         transform: `scaleY(${alive.verticalDirection}) translateY(${alive.falling}vh)` // flips fish when clicked
                     }} />
                 </div>
@@ -267,7 +267,7 @@ function FishPhase3() {
             return Math.floor(Math.random() * (max - min + 1)) + min
         }
 
-        const verticalPosition = getRandomInt(5, 80);
+        const verticalPosition = getRandomInt(100, 3000);
         const fishSize = getRandomInt(80, 200) 
         const randomNum = getRandomInt(0, 1)
         const swimDuration = getRandomInt(7, 28)
@@ -329,7 +329,7 @@ function FishPhase3() {
                 image: "/BigDeadFish.svg",
                 swimming: "paused",
                 verticalDirection: -1,
-                falling: 110
+                falling: 400
             })
 
         } else if (alive.image === "/SmSadFish.svg"){
@@ -337,7 +337,7 @@ function FishPhase3() {
                 image: "/SmDeadFish.svg",
                 swimming: "paused",
                 verticalDirection: -1,
-                falling: 110
+                falling: 400
             }) 
     }
         addKill()
@@ -346,7 +346,7 @@ function FishPhase3() {
     return (
         <div style={{
             position: "absolute",
-            top: `${fish.top}vh`,
+            top: `${fish.top}px`,
             left: `${fish.left}vw`,
             width: `${fish.size}px`,
             animation: `${swim.duration}s ${swim.direction} ${swim.delay}s linear, wiggle ${swim.wiggle}s infinite`,
@@ -355,20 +355,126 @@ function FishPhase3() {
             userSelect: "none" 
         }} onClick={killFish}>
                     <img src={alive.image} alt="Fish" style={{
-                        transition: "transform 7s",
+                        transition: "transform 14s",
                         transform: `scaleY(${alive.verticalDirection}) translateY(${alive.falling}vh)` // flips fish when clicked
                     }} />
                 </div>
             ) 
     }
 
+
+
+// end of game - happy fish
+// phase 4
+           
+function FishWin() {
+    const [fish, setFish] = useState(false);
+    const [swim, setSwim] = useState(false);
+
+    useEffect(() => {
+        const getRandomInt = (min, max) => {
+            min = Math.ceil(min)
+            max = Math.floor(max)
+            return Math.floor(Math.random() * (max - min + 1)) + min
+        }
+
+        const verticalPosition = getRandomInt(100, 3000);
+        const fishSize = getRandomInt(80, 200) 
+        const randomNum = getRandomInt(0, 1)
+        const swimDuration = getRandomInt(7, 28)
+        const swimmingDelay = getRandomInt(60, 110)
+        const swimWiggle = getRandomInt(0, 6)
+        let imageName
+        let horizontalPosition
+        let directionFacing
+        let swimmingDirection
+
+        if (verticalPosition % 2 === 0) {
+            horizontalPosition = -50 // left spawn
+            directionFacing = -1
+            swimmingDirection = "swimToRight"
+        } else {
+            horizontalPosition = 150; // right spawn
+            swimmingDirection = "swimToLeft"
+        }
+
+        switch (randomNum) {
+            case 0: 
+            imageName = "/BigHappyFish.svg"
+            break;
+            case 1: 
+            imageName = "/SmHappyFish.svg"
+            break;
+        }
+        
+        setFish({
+            top: verticalPosition,
+            left: horizontalPosition,
+            direction: directionFacing,
+            size: fishSize,
+            image: imageName,
+        });
+        
+        setSwim({
+            duration: swimDuration,
+            direction: swimmingDirection,
+            delay: swimmingDelay,
+            wiggle: swimWiggle 
+        })
+        
+    }, []);
+
+    return (
+        <div style={{
+            position: "absolute",
+            top: `${fish.top}px`,
+            left: `${fish.left}vw`,
+            width: `${fish.size}px`,
+            animation: `${swim.duration}s ${swim.direction} ${swim.delay}s linear, wiggle ${swim.wiggle}s infinite`,
+            transform: `scaleX(${fish.direction})`,
+            userSelect: "none" 
+        }} >
+                    <img src={fish.image} alt="Fish" />
+                </div>
+            ) 
+    }
+
+
 function StartButton () {
     const [clicked, setClicked] = useState(false)
+    const [outOfTime, setOutOfTime] = useState(false)
+    const [seconds, setSeconds] = useState(60)
+    const [win, setWin] = useState(false)
 
     const { hearts } = useGame()
 
+useEffect(() => {
+    let timer
+            if (clicked && !outOfTime) {
+                timer = setInterval(() => {
+                    setSeconds(seconds => seconds - 1)
+                    if (seconds < 1) {
+                        setSeconds(0)
+                    }
+            
+                }, 1000)}
 
-    if (hearts === 0) {
+    return () => {
+      clearInterval(timer);
+    };
+    }, [clicked, outOfTime])
+
+useEffect(() => {
+    if (seconds < 0) {
+        setOutOfTime(true)
+        }
+    console.log(outOfTime)
+})
+
+// Win logic needs to be added (clothes)
+
+
+    if (!win && (hearts === 0 || outOfTime)) {
         return (
             <div style={{
                 display: "flex", 
@@ -400,12 +506,27 @@ function StartButton () {
                 <div style={{
                         width: "70px",
                         display: "flex",
-                        userSelect: "none"   
+                        userSelect: "none",
+                        position: "fixed",
                         }}>
                     <img src="/heart.svg" alt="heart" style={{ visibility: hearts >= 1 ? "visible" : "hidden" }} />
                     <img src="/heart.svg" alt="heart" style={{ visibility: hearts >= 2 ? "visible" : "hidden" }} />
                     <img src="/heart.svg" alt="heart" style={{ visibility: hearts === 3 ? "visible" : "hidden" }} />
                 </div>
+                <div style ={{
+                    position: "fixed",
+                    fontSize: "50px",
+                    textAlign: "center",
+                    justifyContent: "center",
+                    fontFamily: "Nunito, sans-serif",
+                    fontWeight: "900",
+                    left: "50%",
+                    transform: "translate(-50%)"
+
+                }}>
+                    <p>Timer: {seconds}</p>
+                </div>
+{/* Phase 1 */}
                 <FishPhase1 />
                 <FishPhase1 />
                 <FishPhase1 />
@@ -429,6 +550,23 @@ function StartButton () {
                 <FishPhase1 />
                 <FishPhase1 />
                 <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+{/* Phase 2 */}
                 <FishPhase2 />
                 <FishPhase2 />
                 <FishPhase2 />
@@ -471,6 +609,50 @@ function StartButton () {
                 <FishPhase2 />
                 <FishPhase2 />
                 <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+{/* Phase 3 */}
                 <FishPhase3 />
                 <FishPhase3 />
                 <FishPhase3 />
@@ -581,6 +763,471 @@ function StartButton () {
                 <FishPhase3 />
                 <FishPhase3 />
                 <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+{/* Phase 4 - Happy */}
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+                <FishWin />
+
+
              </div>
         )}
 
@@ -589,55 +1236,62 @@ function StartButton () {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            height: "100vh",
+            minHeight: "100vh",
+            padding: "20px",
+            boxSizing: "border-box"
         }}>
             <div style={{
-                width: "40vw",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
                 backgroundColor: "lightblue",
-                height: "55vh",
                 borderRadius: "15px",
+                padding: "40px 20px",
+                boxSizing: "border-box",
+                width: "90%",
+                maxWidth: "500px",
+                minWidth: "280px",
+                minHeight: "50vh",
+                maxHeight: "85vh",
+                overflowY: "auto"
             }}>
                 <p style={{
                     color: "black",
                     textAlign: "center",
                     fontFamily: "Nunito, sans-serif",
                     fontWeight: "700",
-                    fontSize: "28px",
-                    padding: "50px"
-
-                }}>Goal: Clean 10 pieces of clothes without killing any fish.<br></br><br></br>You have 3 hearts. Each time a fish is killed, a heart is lost</p>
-                <div style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    height: "100vh",
-                    marginTop: "-7vh"
+                    fontSize: "1.5rem",
+                    lineHeight: "1.4",
+                    margin: "0 0 30px 0"
                 }}>
-                    <div
-                        style={{
-                            position: "relative",
-                            backgroundColor: "#7AC943",
-                            borderRadius: "10px",
-                            border: "8px solid white",
-                            width: "180px",
-                            height: "60px",
-                            padding: "30px",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            fontFamily: "Nunito, sans-serif",
-                            fontWeight: "900",
-                            fontSize: "24px",
-                            cursor: "pointer",
-                            color: "#20431D",
-                        }} onClick = {startGame}
-                    >
-                        <p>START</p>
-                    </div>
+                    Goal: Clean 10 pieces of clothes without killing any fish.
+                    <br /><br />
+                    You have 3 hearts. Each time a fish is killed, a heart is lost.
+                </p>
+
+                <div
+                    style={{
+                        backgroundColor: "#7AC943",
+                        borderRadius: "10px",
+                        border: "8px solid white",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontFamily: "Nunito, sans-serif",
+                        fontWeight: "900",
+                        cursor: "pointer",
+                        color: "#20431D",
+                        boxSizing: "border-box",
+                        width: "100%",
+                        maxWidth: "200px",
+                        padding: "15px",
+                        fontSize: "20px",
+                        textAlign: "center"
+                    }} 
+                    onClick={startGame}
+                >
+                    START
                 </div>
             </div>
         </div>
