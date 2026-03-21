@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react";
-import ButtonGroups from "../shared/components/ButtonGroups";
+import ButtonGroups from "../shared/components/DumpMeButton";
 import Truck from "../shared/components/Truck";
 import ClothesFall from "../shared/components/Clothes";
 import InfoCards from "../shared/components/InfoCards";
