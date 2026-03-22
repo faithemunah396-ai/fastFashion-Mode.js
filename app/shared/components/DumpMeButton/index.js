@@ -11,7 +11,7 @@ export default function ButtonGroups({onDump}){
           style={{
             position: "absolute",
             top: "70%",
-            left: "70%",
+            left: "75%",
             padding: "10px",
             width: "200px",
             height: "80px",
