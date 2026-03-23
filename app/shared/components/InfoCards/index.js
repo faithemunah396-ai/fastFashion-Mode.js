@@ -14,7 +14,7 @@ export default function InfoCards(){
           padding: "50px",
           display: "flex",
           flexDirection: "column",
-          zindex: "2",
+          zindex: "4",
         }}
       >
         <div

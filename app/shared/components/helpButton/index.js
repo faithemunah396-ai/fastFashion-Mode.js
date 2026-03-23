@@ -3,7 +3,7 @@
 function HelpMeButton() {
     return (
         <div style={{
-        zindex: "3",
+        zindex: "4",
       }}>
         <div
           style={{

@@ -7,8 +7,8 @@ export default function WaterTransition({fadeIn}){
             flexDirection: "column",
             justifyContent: "center",
             zIndex: "2",
-            opacity: "fadeIn ? 1 : 0",
-            transition: " opacity 0.5s ease"
+            opacity: fadeIn ? 1 : 0,
+            transition: " opacity 4s ease"
         }}>
             <div id="waterWave" style={{
                 position: "absolute",
@@ -19,9 +19,9 @@ export default function WaterTransition({fadeIn}){
             <div id="water" style={{
                 backgroundColor: "#98CCBA",
                 position: "absolute",
-                top: "110%",
-                width: "180vw",
-                height:"3100px"
+                top: "150%",
+                width: "200vw",
+                height:"2700px"
             }}></div>
         </div>
     );

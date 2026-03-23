@@ -33,7 +33,9 @@ export default function ClothesFall({fall}){
   
 
     return (
-      <div>
+      <div stye={{
+        zindex: "3",
+      }}>
         <>
           {clothesImg.map(
             (item) =>
