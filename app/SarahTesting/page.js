@@ -26,7 +26,7 @@ export default function Home() {
       <ButtonGroups onDump={() => { handleDump(); handleFall(); }}/>
       <Truck dump={dump}/>
       <ClothesFall fall={fall}/>
-      <InfoCards></InfoCards>
+      {/* <InfoCards></InfoCards> */}
       <HelpMeButton></HelpMeButton>
       <GameProvider>
         <StartButton />
