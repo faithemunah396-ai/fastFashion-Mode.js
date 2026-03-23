@@ -3,13 +3,15 @@ import { useState } from "react";
 
 export default function ButtonGroups({onDump}){
     return (
-      <div>
+      <div style={{
+        // zindex: "300",
+      }}>
         <div
           onClick={onDump}
           style={{
             position: "absolute",
             top: "70%",
-            left: "75%",
+            left: "70%",
             padding: "10px",
             width: "200px",
             height: "80px",

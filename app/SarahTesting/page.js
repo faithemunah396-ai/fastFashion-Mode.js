@@ -5,12 +5,14 @@ import Truck from "../shared/components/Truck";
 import ClothesFall from "../shared/components/Clothes";
 import InfoCards from "../shared/components/InfoCards";
 import Background from "../shared/components/Background";
+import WaterTransition from "../shared/components/WaterTransition";
 import { HelpMeButton } from "../shared/components/helpButton";
 import { StartButton, GameProvider } from "../shared/components/Fish";
 
 export default function Home() {
     const [dump, setDump] = useState(false);
     const [fall, setFall] = useState(false);
+    const [fadeIn,setFdeIn] = useState(false);
 
   const [backgroundVis, setBackgroundVis] = useState("visible");
   const [buttonGroupsVis, setButtonGroupsVis] = useState("visible");
@@ -27,6 +29,10 @@ export default function Home() {
 
     function handleFall(){
       setFall(true);
+    }
+
+    function handleFade(){
+      setFdeIn(true);
     }
 
   function showBackground() { setBackgroundVis("visible"); }
@@ -55,13 +61,18 @@ export default function Home() {
       <GameProvider>
       <Background></Background>
       <div style={{ visibility: `${buttonGroupsVis}`}}>
-        <ButtonGroups onDump={() => { handleDump(); handleFall(); showHelpMeButton(); hideButtonGroups(); }}/>
+        <ButtonGroups onDump={() => { handleDump(); handleFall(); handleFade(); showHelpMeButton(); hideButtonGroups(); }}/>
       </div>
+    
       <Truck dump={dump}/>
       <ClothesFall fall={fall}/>
+      {/* <WaterTransition fadeIn={fadeIn}></WaterTransition> */}
+    
+      
       <div style={{
         visibility: `${infoCardsVis}`
       }}><InfoCards></InfoCards></div>
+      
       <div onClick={() => {
         hideInfoCards()
         showStartGame()

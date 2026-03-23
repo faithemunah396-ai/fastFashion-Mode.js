@@ -23,11 +23,14 @@ export default function ClothesFall({fall}){
     ]
 
     const [visibleClothes, setVisibleClothes] = useState(clothesImg.map(item => item.id));
+    const [scoretracking,setScoreTracking] = useState(0);
+    const winScore = 10;
 
 
     const handleClothingClick = (item) => {
     // console.log("clicked", item)
     setVisibleClothes(prev => prev.filter(itemId => itemId !== item.id));
+    setScoreTracking(prev => prev + 1)
   }
 
   
@@ -35,6 +38,28 @@ export default function ClothesFall({fall}){
     return (
       <div>
         <>
+          {/*Score trcker */}
+
+        {scoretracking > 0 &&(
+           <div
+            style={{
+              position: "fixed",
+              top: 20,
+              right: 20,
+              padding: "12px 20px",
+              color: "#222",
+              fontSize: "28px",
+              fontWeight: "bold",
+              borderRadius: "8px",
+              zIndex: 1000,
+            }}
+          >
+            Clothes Collected: {scoretracking}
+          </div> 
+        )}
+          
+
+          {/*Clothes animation*/}
           {clothesImg.map(
             (item) =>
               visibleClothes.includes(item.id) && (
@@ -48,10 +73,31 @@ export default function ClothesFall({fall}){
                     left: fall ? item.x : "35%",
                     transition: "all 5s ease",
                     transitionDelay: "0.5s",
-                    
                   }}
                 />
               ),
+          )}
+          {/*Win statement*/}
+          {scoretracking >= winScore && (
+            <div
+              style={{
+                position: "fixed",
+                top: 30,
+                left: "50%",
+                width: "800px",
+                height: "500px",
+                transform: "translateX(-50%)",
+                padding: "190px",
+                backgroundColor: "#4CAF50",
+                color: "#fff",
+                fontSize: "60px",
+                fontWeight: "bold",
+                borderRadius: "10px",
+                zIndex: 1000,
+              }}
+            >
+              Congratulations, you won!
+            </div>
           )}
         </>
       </div>

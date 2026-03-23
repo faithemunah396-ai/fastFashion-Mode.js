@@ -5,13 +5,13 @@ export default function Truck({ dump }){
 
     const style = {
       position: "absolute",
+      zIndex: "2",
       top: "30%",
       left: "5%",
       width: "1100px",
       right: "0",
       transition: "transform 2s ease-in-out",
       transform: dump ? "translateX(-45%)" : "translateX(0%)",
-      zIndex: "2",
     };
 
     return(
