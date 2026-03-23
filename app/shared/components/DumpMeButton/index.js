@@ -4,7 +4,7 @@ import { useState } from "react";
 export default function ButtonGroups({onDump}){
     return (
       <div style={{
-        zindex: "300",
+        zindex: "3",
       }}>
         <div
           onClick={onDump}
