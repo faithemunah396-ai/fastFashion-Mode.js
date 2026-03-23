@@ -2,27 +2,46 @@
 
 function HelpMeButton() {
     return (
+        <div style={{
+        zindex: "3",
+      }}>
         <div
+          style={{
+            position: "absolute",
+            top: "480%",
+            left: "75%",
+            padding: "10px",
+            width: "200px",
+            height: "80px",
+            backgroundColor: "#FFFFFF",
+            borderRadius: "15px",
+            cursor: "pointer",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <div
             style={{
               position: "relative",
               backgroundColor: "#7AC943",
               borderRadius: "10px",
-              border: "8px solid white",
               width: "180px",
               height: "60px",
               padding: "30px",
+
               display: "flex",
               alignItems: "center",
-              justifyContent: "center",
+
               fontFamily: "Nunito, sans-serif",
               fontWeight: "900",
-              fontSize: "20px",
-              cursor: "pointer",
+              fontSize: "32px",
               color: "#20431D",
             }}
           >
-            <p>HELP US</p>
+            Help Us
           </div>
+        </div>
+      </div>
     )
 }
 
