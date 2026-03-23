@@ -25,6 +25,7 @@ export default function ClothesFall({fall}){
     const [visibleClothes, setVisibleClothes] = useState(clothesImg.map(item => item.id));
     const [scoretracking,setScoreTracking] = useState(0);
     const winScore = 10;
+    
 
 
     const handleClothingClick = (item) => {
