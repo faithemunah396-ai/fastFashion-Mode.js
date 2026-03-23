@@ -1,10 +1,12 @@
 "use client"
 import { useState } from "react";
-import ButtonGroups from "../shared/components/ButtonGroups";
+import ButtonGroups from "../shared/components/DumpMeButton";
 import Truck from "../shared/components/Truck";
 import ClothesFall from "../shared/components/Clothes";
 import InfoCards from "../shared/components/InfoCards";
 import Background from "../shared/components/Background";
+import { HelpMeButton } from "../shared/components/helpButton";
+import { StartButton, GameProvider } from "../shared/components/Fish";
 
 export default function Home() {
     const [dump, setDump] = useState(false);
@@ -25,6 +27,10 @@ export default function Home() {
       <Truck dump={dump}/>
       <ClothesFall fall={fall}/>
       <InfoCards></InfoCards>
+      <HelpMeButton></HelpMeButton>
+      <GameProvider>
+        <StartButton />
+      </GameProvider>
     </div>
   );
 }

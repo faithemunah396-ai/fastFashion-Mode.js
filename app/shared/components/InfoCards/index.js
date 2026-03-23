@@ -14,7 +14,11 @@ export default function InfoCards(){
           padding: "50px",
           display: "flex",
           flexDirection: "column",
+<<<<<<< HEAD
           zindex: "3",
+=======
+          zindex: "2",
+>>>>>>> a7e2bdf3c7a9ca7ae088b4b232e7cb9b915b02ee
         }}
       >
         <div

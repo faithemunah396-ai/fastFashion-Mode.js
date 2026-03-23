@@ -45,8 +45,14 @@ export default function ClothesFall({fall}){
                   style={{
                     position: "absolute",
                     top: fall ? item.y : "35%",
+<<<<<<< HEAD
                     left: fall ? item.x : "25%",
                     transition: "all 5s ease",
+=======
+                    left: fall ? item.x : "35%",
+                    transition: "all 5s ease",
+                    transitionDelay: "0.5s",
+>>>>>>> a7e2bdf3c7a9ca7ae088b4b232e7cb9b915b02ee
                     
                   }}
                 />
