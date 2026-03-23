@@ -1,13 +1,14 @@
 "use client"
-import { useState } from "react";
 
-export default function WaterTransition(){
+export default function WaterTransition({fadeIn}){
     return(
         <div style={{
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            zIndex: "1"
+            zIndex: "2",
+            opacity: "fadeIn ? 1 : 0",
+            transition: " opacity 0.5s ease"
         }}>
             <div id="waterWave" style={{
                 position: "absolute",
@@ -17,7 +18,9 @@ export default function WaterTransition(){
             </div>
             <div id="water" style={{
                 backgroundColor: "#98CCBA",
-                width: "100vw",
+                position: "absolute",
+                top: "110%",
+                width: "180vw",
                 height:"3100px"
             }}></div>
         </div>
