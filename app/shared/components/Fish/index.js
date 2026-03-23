@@ -41,11 +41,11 @@ function FishPhase1() {
             return Math.floor(Math.random() * (max - min + 1)) + min
         }
 
-        const verticalPosition = getRandomInt(100, 3000);
+        const verticalPosition = getRandomInt(1200, 3500);
         const fishSize = getRandomInt(80, 200) 
         const randomNum = getRandomInt(0, 1)
-        const swimDuration = getRandomInt(18, 35)
-        const swimmingDelay = getRandomInt(0, 1)
+        const swimDuration = getRandomInt(4, 19)
+        const swimmingDelay = getRandomInt(0, 6)
         const swimWiggle = getRandomInt(0, 6)
         let imageName
         let horizontalPosition
@@ -129,9 +129,10 @@ function FishPhase1() {
             animation: `${swim.duration}s ${swim.direction} ${swim.delay}s linear, wiggle ${swim.wiggle}s infinite`,
             animationPlayState: alive.swimming,
             transform: `scaleX(${fish.direction})`,
-            userSelect: "none" 
+            userSelect: "none",
+            userDrag: "none"
         }} onClick={killFish}>
-                    <img src={alive.image} alt="Fish" style={{
+                    <img src={alive.image} alt="Fish" draggable="false" style={{
                         transition: "transform 14s",
                         transform: `scaleY(${alive.verticalDirection}) translateY(${alive.falling}vh)` // flips fish when clicked
                     }} />
@@ -155,11 +156,11 @@ function FishPhase1() {
             return Math.floor(Math.random() * (max - min + 1)) + min
         }
 
-        const verticalPosition = getRandomInt(100, 3000);
+        const verticalPosition = getRandomInt(1200, 3500);
         const fishSize = getRandomInt(80, 200) 
         const randomNum = getRandomInt(0, 1)
         const swimDuration = getRandomInt(12, 26)
-        const swimmingDelay = getRandomInt(16, 20)
+        const swimmingDelay = getRandomInt(10, 30)
         const swimWiggle = getRandomInt(0, 6)
         let imageName
         let horizontalPosition
@@ -243,9 +244,10 @@ function FishPhase1() {
             animation: `${swim.duration}s ${swim.direction} ${swim.delay}s linear, wiggle ${swim.wiggle}s infinite`,
             animationPlayState: alive.swimming,
             transform: `scaleX(${fish.direction})`,
-            userSelect: "none" 
+            userSelect: "none",
+            userDrag: "none"
         }} onClick={killFish}>
-                    <img src={alive.image} alt="Fish" style={{
+                    <img src={alive.image} alt="Fish" draggable="false" style={{
                         transition: "transform 14s",
                         transform: `scaleY(${alive.verticalDirection}) translateY(${alive.falling}vh)` // flips fish when clicked
                     }} />
@@ -267,11 +269,11 @@ function FishPhase3() {
             return Math.floor(Math.random() * (max - min + 1)) + min
         }
 
-        const verticalPosition = getRandomInt(100, 3000);
+        const verticalPosition = getRandomInt(1200, 3500);
         const fishSize = getRandomInt(80, 200) 
         const randomNum = getRandomInt(0, 1)
-        const swimDuration = getRandomInt(7, 28)
-        const swimmingDelay = getRandomInt(38, 42)
+        const swimDuration = getRandomInt(5, 12)
+        const swimmingDelay = getRandomInt(15, 60)
         const swimWiggle = getRandomInt(0, 6)
         let imageName
         let horizontalPosition
@@ -352,15 +354,21 @@ function FishPhase3() {
             animation: `${swim.duration}s ${swim.direction} ${swim.delay}s linear, wiggle ${swim.wiggle}s infinite`,
             animationPlayState: alive.swimming,
             transform: `scaleX(${fish.direction})`,
-            userSelect: "none" 
+            userSelect: "none",
+            userDrag: "none"
         }} onClick={killFish}>
-                    <img src={alive.image} alt="Fish" style={{
+                    <img src={alive.image} alt="Fish" draggable="false" style={{
                         transition: "transform 14s",
                         transform: `scaleY(${alive.verticalDirection}) translateY(${alive.falling}vh)` // flips fish when clicked
                     }} />
                 </div>
             ) 
     }
+
+
+
+
+
 
 
 
@@ -378,11 +386,11 @@ function FishWin() {
             return Math.floor(Math.random() * (max - min + 1)) + min
         }
 
-        const verticalPosition = getRandomInt(100, 3000);
+        const verticalPosition = getRandomInt(1200, 3500);
         const fishSize = getRandomInt(80, 200) 
         const randomNum = getRandomInt(0, 1)
         const swimDuration = getRandomInt(7, 28)
-        const swimmingDelay = getRandomInt(60, 110)
+        const swimmingDelay = getRandomInt(55, 110)
         const swimWiggle = getRandomInt(0, 6)
         let imageName
         let horizontalPosition
@@ -432,9 +440,10 @@ function FishWin() {
             width: `${fish.size}px`,
             animation: `${swim.duration}s ${swim.direction} ${swim.delay}s linear, wiggle ${swim.wiggle}s infinite`,
             transform: `scaleX(${fish.direction})`,
-            userSelect: "none" 
+            userSelect: "none",
+            userDrag: "none"
         }} >
-                    <img src={fish.image} alt="Fish" />
+                    <img src={fish.image} alt="Fish" draggable="false" />
                 </div>
             ) 
     }
@@ -479,19 +488,37 @@ useEffect(() => {
             <div style={{
                 display: "flex", 
                 justifyContent: "center", 
-                alignItems: "center",
-                height: "100vh"
+                top: "50%",
+                left: "50%",
+                width: "100vw",
+                height: "100vh",
+                paddingTop: "15%",
+                transform: "translate(-50%, -50%)",
+                position: "fixed",
+                zIndex: "9999",
+                backgroundColor: "crimson",
+                color: "white"
             }}>
                 <p style={{
                 fontSize: "150px",
                 textAlign: "center",
                 textJustify: "center",
                 fontFamily: "Nunito, sans-serif",
+                justifyContent: "center",
                 fontWeight: "900"
                 }}>
                     
                     YOU LOSE
                     </p>
+                    <img src="/BigDeadFish.svg"
+                    style={{
+                        transform: `scaleY(-1)`,
+                        zIndex: "9999",
+                        position: "fixed",
+                        width: "300px",
+                        marginTop: "200px"
+                        
+                        }}></img>
             </div>
         );
     }
@@ -508,18 +535,22 @@ useEffect(() => {
                         display: "flex",
                         userSelect: "none",
                         position: "fixed",
+                        zIndex: "999",
+                        top: "20px",
                         }}>
                     <img src="/heart.svg" alt="heart" style={{ visibility: hearts >= 1 ? "visible" : "hidden" }} />
                     <img src="/heart.svg" alt="heart" style={{ visibility: hearts >= 2 ? "visible" : "hidden" }} />
                     <img src="/heart.svg" alt="heart" style={{ visibility: hearts === 3 ? "visible" : "hidden" }} />
                 </div>
                 <div style ={{
+                    zIndex: "999",
                     position: "fixed",
                     fontSize: "50px",
                     textAlign: "center",
                     justifyContent: "center",
                     fontFamily: "Nunito, sans-serif",
                     fontWeight: "900",
+                    top: "20px",
                     left: "50%",
                     transform: "translate(-50%)"
 
@@ -566,7 +597,227 @@ useEffect(() => {
                 <FishPhase1 />
                 <FishPhase1 />
                 <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
+                <FishPhase1 />
 {/* Phase 2 */}
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
+                <FishPhase2 />
                 <FishPhase2 />
                 <FishPhase2 />
                 <FishPhase2 />
@@ -740,6 +991,7 @@ useEffect(() => {
                 <FishPhase3 />
                 <FishPhase3 />
                 <FishPhase3 />
+                 <FishPhase3 />
                 <FishPhase3 />
                 <FishPhase3 />
                 <FishPhase3 />
@@ -787,6 +1039,7 @@ useEffect(() => {
                 <FishPhase3 />
                 <FishPhase3 />
                 <FishPhase3 />
+                 <FishPhase3 />
                 <FishPhase3 />
                 <FishPhase3 />
                 <FishPhase3 />
@@ -894,6 +1147,180 @@ useEffect(() => {
                 <FishPhase3 />
                 <FishPhase3 />
                 <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                <FishPhase3 />
+                
 {/* Phase 4 - Happy */}
                 <FishWin />
                 <FishWin />
@@ -1041,191 +1468,7 @@ useEffect(() => {
                 <FishWin />
                 <FishWin />
                 <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
-                <FishWin />
+
 
 
              </div>
@@ -1233,15 +1476,21 @@ useEffect(() => {
 
     return (
         <div style={{
+            zIndex: "999",
+            marginTop: "-2500px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             minHeight: "100vh",
             padding: "20px",
-            boxSizing: "border-box"
+            boxSizing: "border-box",
+            position: "relative"
         }}>
             <div style={{
                 display: "flex",
+                position: "fixed",
+                zIndex: "9999",
+                top: "200px",
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",

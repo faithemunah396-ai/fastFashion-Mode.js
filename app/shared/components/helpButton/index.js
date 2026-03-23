@@ -3,38 +3,36 @@
 function HelpMeButton() {
     return (
         <div style={{
-        zindex: "3",
       }}>
         <div
           style={{
-            position: "absolute",
-            top: "480%",
-            left: "75%",
+            display: "flex",
             padding: "10px",
-            width: "200px",
-            height: "80px",
-            backgroundColor: "#FFFFFF",
             borderRadius: "15px",
             cursor: "pointer",
             display: "flex",
-            justifyContent: "center",
+            alignContent: "center",
+            justifyContent: "right",
+            marginRight: "100px",
+            marginTop: "-180px"
           }}
         >
           <div
             style={{
+              display: "flex",
               position: "relative",
+              textAlign: "center",
+              justifyContent: "center",
               backgroundColor: "#7AC943",
               borderRadius: "10px",
-              width: "180px",
-              height: "60px",
+              border: " 10px solid white",
+              width: "300px",
+              height: "100px",
               padding: "30px",
-
-              display: "flex",
               alignItems: "center",
-
               fontFamily: "Nunito, sans-serif",
               fontWeight: "900",
-              fontSize: "32px",
+              fontSize: "40px",
               color: "#20431D",
             }}
           >
