@@ -1,13 +1,13 @@
 "use client"
 import { useState } from "react";
-import ButtonGroups from "../shared/components/DumpMeButton";
-import Truck from "../shared/components/Truck";
-import ClothesFall from "../shared/components/Clothes";
-import InfoCards from "../shared/components/InfoCards";
-import Background from "../shared/components/Background";
-import WaterTransition from "../shared/components/WaterTransition";
-import { HelpMeButton } from "../shared/components/helpButton";
-import { StartButton, GameProvider } from "../shared/components/Fish";
+import ButtonGroups from "./shared/components/DumpMeButton";
+import Truck from "./shared/components/Truck";
+import ClothesFall from "./shared/components/Clothes";
+import InfoCards from "./shared/components/InfoCards";
+import Background from "./shared/components/Background";
+import WaterTransition from "./shared/components/WaterTransition";
+import { HelpMeButton } from "./shared/components/helpButton";
+import { StartButton, GameProvider } from "./shared/components/Fish";
 
 export default function Home() {
     const [dump, setDump] = useState(false);
